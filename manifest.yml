@@ -6,3 +6,4 @@ applications:
   name: platform_info
   host: platform-info
   disk_quota: 1024M
+  buildpack: https://github.com/cloudfoundry/python-buildpack.git
