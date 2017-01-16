@@ -1,4 +1,6 @@
 import os
+import platform_info
+
 try:
   from SimpleHTTPServer import SimpleHTTPRequestHandler as Handler
   from SocketServer import TCPServer as Server
@@ -18,4 +20,3 @@ try:
 except KeyboardInterrupt:
   pass
 httpd.server_close()
-
