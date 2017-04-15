@@ -23,7 +23,7 @@ except FileNotFoundError:
 
 app = web.Application()
 
-async def index_handler(request):
+async def handler(request):
     return web.Response(text=platform_info.get_platform_info())
 
 
