@@ -25,7 +25,7 @@ app = web.Application()
 
 
 async def handler(request):
-    uptime = 'uptime: {}\n\n'.format(time.time - START_TIME)
+    uptime = 'uptime: {}\n\n'.format(time.time() - START_TIME)
     return uptime + web.Response(text=platform_info.get_platform_info())
 
 
