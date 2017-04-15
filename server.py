@@ -31,7 +31,7 @@ async def handler(request):
 
 def run_webserver(app, port=PORT):
     # aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader(os.curdir))
-    app.router.add_route('GET', '/', handler)
+    app.router.add_get('/', handler)
     # app.router.add_route('GET', '/{max_pkgs}', handler)
     app.router.add_static('/static/', path='./static')
     web.run_app(app, port=PORT)
