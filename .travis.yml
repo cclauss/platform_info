@@ -1,0 +1,19 @@
+sudo: false
+dist: trusty
+language: python
+cache: pip
+python:
+    - 3.6.1
+    - "nightly"  # Python 3.7.0a0 and pip 7.1.2  # currently points to 3.7-dev
+# command to install dependencies
+install:
+    - pip install --upgrade pip setuptools
+    - pip install flake8
+# preflight
+before_script:
+    flake8 . --count --max-line-length=127 --statistics   # 127 == GitHub editor width
+script:
+    flake8 . --count --max-line-length=127 --select=E999  # Stop build on syntax errors
+notifications:
+    on_success: change
+    on_failure: always
