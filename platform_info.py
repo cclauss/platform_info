@@ -3,14 +3,25 @@
 import inspect
 import platform
 
-for name, value in inspect.getmembers(platform):
+
+def info(name, value):
     if name[0] != '_' and callable(value):
         try:
             value = value()
-        except (IndexError, TypeError):
-            continue
-        if str(value).strip("( ,')"):
-            print('{:>21}() = {}'.format(name, value))
+            if str(value).strip("( ,')"):
+                return ('{:>21}() = {}'.format(name, value))
+        except TypeError:
+            pass
 
-# import sys
-# print(sys.platform, sys.version)
+    return ''
+
+
+def get_platform_info():
+    lines = (info(name, value) for name, value in inspect.getmembers(platform))
+    return '\n'.join(line for line in lines if line)
+
+
+if __name__ == '__main__':
+    print(get_platform_info())
+    import sys
+    print(sys.platform, sys.version)
