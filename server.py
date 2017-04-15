@@ -26,7 +26,7 @@ app = web.Application()
 
 async def handler(request):
     uptime = 'uptime: {}\n\n'.format(time.time() - START_TIME)
-    return uptime + web.Response(text=platform_info.get_platform_info())
+    return web.Response(text=uptime + platform_info.get_platform_info())
 
 
 def run_webserver(app, port=PORT):
