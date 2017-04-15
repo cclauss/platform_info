@@ -13,7 +13,7 @@ import webbrowser
 
 import platform_info
 
-START_TIME = time.time()
+START = time.time()
 PORT = int(os.getenv('PORT', 8000))  # Cloud will provide a web server PORT id
 
 # try:  # Immediately change current directory to avoid exposure of control files
@@ -25,7 +25,7 @@ app = web.Application()
 
 
 async def handler(request):
-    uptime = '\n\n{:>22}:  {}'.format('uptime', time.time() - START_TIME)
+    uptime = '\n\n{:>22}:   {:,.2f} seconds'.format('uptime', time.time() - START)
     return web.Response(text=platform_info.get_platform_info() + uptime)
 
 
